@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen(options =>
     {
         Title = "Gerenciador de Tarefas API",
         Version = "v1",
-        Description = "API REST para gerenciamento de tarefas"
+        Description = "API REST para gerenciamento de tarefas."
     });
 });
 
