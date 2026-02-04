@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GerenciadorTarefas.Communication.Requests;
 
-public class RequestRegisterTaskJson
+public class RequestTaskJson
 {
     [Required(ErrorMessage = "O nome da tarefa é obrigatório.")]
     [StringLength(100, ErrorMessage = "O nome deve ter no máximo 100 caracteres.")]

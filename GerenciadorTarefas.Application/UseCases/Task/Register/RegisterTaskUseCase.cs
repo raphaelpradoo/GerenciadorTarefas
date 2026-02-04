@@ -1,13 +1,20 @@
-﻿using GerenciadorTarefas.Communication.Requests;
+﻿using GerenciadorTarefas.Communication.Repositories;
+using GerenciadorTarefas.Communication.Requests;
 using GerenciadorTarefas.Communication.Responses;
 
 namespace GerenciadorTarefas.Application.UseCases.Task.Register;
 
 public class RegisterTaskUseCase
 {
-    public ResponseTaskJson Execute (RequestRegisterTaskJson request)
+    private readonly ITaskRepository _repository;
+    public RegisterTaskUseCase(ITaskRepository repository)
     {
-        return new ResponseTaskJson
+        _repository = repository;
+    }
+
+    public ResponseTaskJson Execute (RequestTaskJson request)
+    {
+        var task = new ResponseTaskJson
         {
             Id = Guid.NewGuid(),
             Name = request.Name,
@@ -16,5 +23,9 @@ public class RegisterTaskUseCase
             Priority = request.Priority,
             Status = request.Status
         };
+
+        _repository.Add(task);
+
+        return task;
     }
 }
